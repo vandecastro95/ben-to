@@ -1,8 +1,11 @@
 import React from 'react';
+import BentoList from './BentoList';
+import BentoListFilters from './BentoListFilters'
 
 const Dashboard = () => (
     <div>
-        add Dashboard heredadasdasd
+        <BentoListFilters />
+        <BentoList />
     </div>
 )
 

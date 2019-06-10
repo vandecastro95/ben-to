@@ -1,9 +1,43 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import BentoForm from './BentoForm'
+import { editBento, removeBento } from './actions/bento'
 
-const EditBentoPage = () => (
-    <div>
-        edit dish page here
-    </div>
-)
+export class EditBentoPage extends React.Component {
 
-export default EditBentoPage;
+  onSubmit = (bento) => {
+    this.props.editBento(this.props.bento.id, bento)
+    this.props.history.push('/')
+  }
+
+  onRemovebento = (bento) => {
+    this.props.removeBento(this.props.bento.id)
+    this.props.history.push('/')
+  }
+
+  render () {
+    return (
+      <div>
+        <BentoForm 
+          bento={this.props.bento}
+          onSubmit = {this.onSubmit}
+        />
+        <button onClick={this.onRemovebento}
+        > Remove </button>
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  editBento: (id, bento) => dispatch(editBento(id, bento)),
+  removeBento: (id) => dispatch(removeBento(id))
+})
+
+const mapStateToProps = (state, props) => {
+  return {
+    bento: state.bento.find((bento)=> bento.id === props.match.params.id)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditBentoPage);

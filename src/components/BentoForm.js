@@ -8,7 +8,7 @@ class BentoForm extends React.Component {
         this.state = {
             name: props.bento ? props.bento.name : '',
             ingredients: props.bento ? props.bento.ingredients : '',
-            cuisine: props.bento ? props.bento.bento : '',
+            cuisine: props.bento ? props.bento.cuisine : '',
             cost: props.bento ? (props.bento.cost).toString() : ''
         };
     }
@@ -46,14 +46,13 @@ class BentoForm extends React.Component {
             this.setState(() => ({error: 'Please provide name and cost'}))
         } else {
             this.setState(() => ({ error: ''}))
-            // this.props.onSubmit({
-            //     name: this.state.name,
-            //     cost: parseFloat(this.state.cost, 10) * 100,
-            //     ingredients: this.state.ingredients,
-            //     cuisine: this.state.cuisine
+            this.props.onSubmit({
+                name: this.state.name,
+                cost: parseFloat(this.state.cost, 10) * 100,
+                ingredients: this.state.ingredients,
+                cuisine: this.state.cuisine
 
-            // })
-            console.log(this.state)
+            })
         }
     }
 
@@ -88,7 +87,7 @@ class BentoForm extends React.Component {
                         onChange={this.onIngredientsChange}
                         >
                     </textarea>
-                    <button>Add Bento</button>
+                    <button> Submit Bento </button>
                 </form>
             </div>
         )
