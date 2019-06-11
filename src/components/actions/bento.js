@@ -3,7 +3,7 @@ import uuid from 'uuid';
 //ADD_EXPENSE
 
 export const addBento = (
-    { name = '', cuisine = '', cost = 0, ingredients = ''} = {}
+    { name = '', cuisine = '', cost = 0, ingredients = '', img = ''} = {}
     ) => ({
     type: 'ADD_BENTO',
     bento: {
@@ -11,7 +11,8 @@ export const addBento = (
         name,
         cuisine, 
         cost,
-        ingredients
+        ingredients,
+        img
     }
 })
 

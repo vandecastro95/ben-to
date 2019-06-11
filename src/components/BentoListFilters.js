@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter } from './actions/filters';
+import '../styles/components/header.css'
 
 export class BentoListFilters extends React.Component {
    state = {
@@ -14,7 +15,10 @@ export class BentoListFilters extends React.Component {
     render() {
     return (
         <div>
-        <input type="text" 
+        
+        <input type="text"
+         
+            placeholder="search"
             value={this.props.filters.onTextChange}
             onChange={this.onTextChange} />
     </div>

@@ -1,6 +1,27 @@
 import React from 'react';
+import { Paper, Typography } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    root: {
+      width: '40rem',
+      height: '60rem',
+      border: 'none',
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      margin: '0',
+      elevation: '1'
+    },
+    form: {
+        margin: '1.6rem',
+        padding: '3.2rem'
+    }
+  });
+  
 
 class BentoForm extends React.Component {
+    
 
     constructor(props) {
         super(props)
@@ -38,6 +59,11 @@ class BentoForm extends React.Component {
         this.setState(() => ({ ingredients }))
     }
 
+    onImgChange = (e) => {
+        const img = e.target.value;
+        this.setState(() => ({ img }))
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 
@@ -50,17 +76,24 @@ class BentoForm extends React.Component {
                 name: this.state.name,
                 cost: parseFloat(this.state.cost, 10) * 100,
                 ingredients: this.state.ingredients,
-                cuisine: this.state.cuisine
+                cuisine: this.state.cuisine,
+                img: this.state.img
 
             })
         }
     }
 
     render () {
+        
         return (
-            <div>
+            <div className={this.props.classes.root}>
             {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
+                <Paper  className={this.props.classes.form}>
+
+                <Typography gutterBottom variant="h5" component="h2" className={this.props.classes.header}>
+                 What Bento are we cooking today?
+                </Typography>
                     <input
                         type="text"
                         placeholder="Name"
@@ -87,11 +120,19 @@ class BentoForm extends React.Component {
                         onChange={this.onIngredientsChange}
                         >
                     </textarea>
+                    <input
+                        type="text"
+                        placeholder="Image URL"
+                        value={this.state.img}
+                        onChange={this.onImgChange}
+                    />
                     <button> Submit Bento </button>
+                    </Paper>
                 </form>
+                
             </div>
         )
     }
 }
 
-export default BentoForm;
+export default withStyles(styles)(BentoForm);

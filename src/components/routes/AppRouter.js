@@ -5,6 +5,7 @@ import AddBentoPage from '../AddBentoPage';
 import EditBentoPage from '../EditBentoPage';
 import Header from '../Header';
 import NotFoundPage from '../NotFoundPage';
+import LandingPage from '../LandingPage';
 
 const AppRouter = () => (
     <BrowserRouter>
