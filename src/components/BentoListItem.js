@@ -14,15 +14,16 @@ import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 345,
-    maxHeight: 250,
-    textDecoration: 'none'
+    width: 317,
+    height: 200,
+    textDecoration: 'none',
+    margin: 0
   },
   media: {
     height: 80,
     transition: 'all .2s ease-in-out',
     '&:hover': {
-        height: 200,
+        height: 150,
         transition: 'all .2s ease-in-out'
     }
   },

@@ -4,25 +4,63 @@ import BentoListItem from './BentoListItem'
 import selectBento from './selectors/bento';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import BentoListFilters from './BentoListFilters';
 
 const useStyles = makeStyles({
     root: {
-        margin: '0',
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'flex-start',
+        minHeight: '50rem'
+    },
+    headerContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    header: {
+        flexGrow: 1
+    },
+    headerSearch: {
+        marginTop: '3.2rem'
     },
     bento: {
-        margin: '1.6rem 1.6rem'
+        margin: '.5rem'
     }
   });
 
   function BentoList(props) {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <Paper>
+        <div className={classes.headerContainer}>
+
+            <Typography 
+                gutterBottom 
+                variant="h2"
+                component="h2" 
+                className={classes.header}>
+                    <Box 
+                        textAlign="justify" 
+                        m={1}
+                        p={2}
+                        fontWeight="fontWeightBold"
+                        letterSpacing={-1} >
+                            Bento
+                    </Box>
+            </Typography>
+
+            <Box
+            className={classes.headerSearch}
+            gutterBottom
+            >
+            <BentoListFilters/>
+            </Box>
+        </div>
+        <div  className={classes.root}>
     {
         props.bento.length === 0 ? (
             <p> No bento </p>
@@ -44,8 +82,8 @@ const useStyles = makeStyles({
             })
         )
     }
-        
     </div>
+    </Paper>
     );
   }
 

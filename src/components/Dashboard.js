@@ -1,23 +1,40 @@
 import React from 'react';
 import BentoList from './BentoList';
-import { Paper } from '@material-ui/core'
+import BentoForm from './BentoForm';
 import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
     root: {
-      padding: '3.2rem',
-      margin: '0 3.2rem',
+      backgroundColor: '#f5f5f5',
+      padding: '0',
       display: 'flex',
+      flexDirection: 'row',
       justifyContent: 'center',
+      flexWrap: 'wrap',
+      margin: '0 0',
+      minHeight: '70rem'
     },
+    bentolist: {
+      backgroundColor: '#f5f5f5',
+      margin: '0 1.6rem',
+      flex: 1,
+    },
+    bentoform: {
+      maxWidth: '40rem',
+      margin: '1rem 1.6rem',
+      flexGrow: '999'
+    }
   });
 
   export default function Dashboard() {
     const classes = useStyles();
     return (
-        <div>
-        <Paper className={classes.root}>
-        <BentoList />
-        </Paper>
+        <div className={classes.root}>
+        <div  className={classes.bentolist} >
+        <BentoList/>
+        </div>
+        <div className={classes.bentoform}>
+        <BentoForm />
+        </div>
         </div>
     );
   }
