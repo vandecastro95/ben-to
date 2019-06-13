@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import BentoForm from './BentoForm'
 import { editBento, removeBento } from './actions/bento'
-
+import BentoList from './BentoList';
 export class EditBentoPage extends React.Component {
 
   onSubmit = (bento) => {

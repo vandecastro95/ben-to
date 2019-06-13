@@ -77,9 +77,13 @@ function BentoListItem({ name, cuisine, cost, id, ingredients, img }) {
       
       <CardActions>
 
+        
+        <Link to={"/edit/" + id + ""}  className={classes.edit}>
         <Button variant="outlined" className={classes.button}>
-        <Link to={"/edit/" + id + ""}  className={classes.edit}> Edit</Link>
+        Edit
+        
         </Button>
+        </Link>
       </CardActions>
     </Card>
   );

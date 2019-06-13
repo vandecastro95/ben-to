@@ -11,7 +11,8 @@ const styles = theme => ({
     form: {
         padding: '3.2rem',
         height: '43.5rem',
-        minWidth: '30rem'
+        margin: '1.6rem',
+        maxWidth: '30rem'
     },
     header: {
         fontSize: '2.4rem',
@@ -24,7 +25,8 @@ const styles = theme => ({
         marginTop: '-2rem',
         paddingTop: '0'
     },
-    inputBento: {    
+    inputBento: {   
+        fontSize: '2rem' 
     },
     textField: {
         alignSelf: "flex-end",
@@ -142,7 +144,7 @@ class BentoForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                <Paper  className={this.props.classes.form} square={true}>
+                <Paper  className={this.props.classes.form} square={true} elevation={21}>
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
                     <Typography gutterBottom variant="h1" component="h1" className={this.props.classes.header}>
@@ -157,7 +159,7 @@ class BentoForm extends React.Component {
                         autoFocus
                         fullWidth
                         margin="normal"
-                        variant="filled"
+                        variant="standard"
                         className={this.props.classes.inputBento}
                         value={this.state.name}
                         onChange={this.onNameChange}
@@ -174,8 +176,8 @@ class BentoForm extends React.Component {
                             },
                         }}
                         margin="normal"
-                        variant="filled"
-                        placeholder="Cuisine"
+                        variant="standard"
+                        label="CUISINE"
                         className={this.props.classes.inputCuisine}
                         value = {this.state.cuisine}
                         onChange={this.onCuisineChange}
@@ -185,10 +187,10 @@ class BentoForm extends React.Component {
                     <Grid item xs={4}>
                         <TextField
                         type="text"
-                        placeholder="Cost"
+                        label="COST"
                         autoFocus
                         margin="normal"
-                        variant="filled"
+                        variant="standard"
                         className={this.props.classes.inputCost}
                         value={this.state.cost}
                         onChange={this.onCostChange}
@@ -198,9 +200,9 @@ class BentoForm extends React.Component {
                     <Grid item xs={12}>
                         <TextField
                         margin="normal"
-                        variant="filled"
+                        variant="standard"
                         fullWidth
-                        placeholder="List of Ingredients used (optional)" 
+                        label="iNGREDIENTS" 
                         className={this.props.classes.input}   
                         value={this.state.ingredients}
                         onChange={this.onIngredientsChange}
@@ -211,9 +213,9 @@ class BentoForm extends React.Component {
                         <TextField
                         type="text"
                         margin="normal"
-                        variant="filled"
+                        variant="standard"
                         fullWidth
-                        placeholder="Image URL"
+                        label="IMAGE URL"
                         className={this.props.classes.input}
                         value={this.state.img}
                         onChange={this.onImgChange}
