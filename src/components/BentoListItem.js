@@ -37,7 +37,7 @@ const useStyles = makeStyles({
       color: 'black',
       textDecoration: 'none',
       marginBottom: '1.6rem',
-      padding: '0',
+      paddingBottom: '1.6rem',
   },
   button: {
       height: '2.4rem',
@@ -66,7 +66,7 @@ function BentoListItem({ name, cuisine, cost, id, ingredients, img }) {
         <CardContent className={classes.content}>
 
           
-          <Typography gutterBottom variant="h5" component="h2" className={classes.header}>
+          <Typography gutterBottom variant="h5" component="h3" className={classes.header}>
           { name } ${cost}
           </Typography>
           

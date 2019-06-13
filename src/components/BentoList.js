@@ -20,12 +20,13 @@ const useStyles = makeStyles({
     headerContainer: {
         display: 'flex',
         flexDirection: 'row',
+        marginBottom: '1.6rem'
     },
     header: {
         flexGrow: 1
     },
     headerSearch: {
-        marginTop: '3.2rem'
+        marginTop: '0rem'
     },
     bento: {
         margin: '.5rem'
@@ -35,8 +36,11 @@ const useStyles = makeStyles({
   function BentoList(props) {
     const classes = useStyles();
     return (
-        <Paper>
-        <div className={classes.headerContainer}>
+        <Paper
+        elevation={21}>
+        <Box 
+        boxShadow={1}
+        className={classes.headerContainer}>
 
             <Typography 
                 gutterBottom 
@@ -59,7 +63,7 @@ const useStyles = makeStyles({
             >
             <BentoListFilters/>
             </Box>
-        </div>
+        </Box>
         <div  className={classes.root}>
     {
         props.bento.length === 0 ? (
@@ -70,6 +74,7 @@ const useStyles = makeStyles({
             props.bento.map((expense) => {
                 return (
                     <Paper
+                    elevation={2}
                     className={classes.bento}>
 
                     <BentoListItem

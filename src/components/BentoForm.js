@@ -1,16 +1,38 @@
 import React from 'react';
-import { Paper, Typography } from '@material-ui/core'
+import { Paper, Typography, Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
     root: {
-      background: 'none',
+      background: 'none'
+      
     },
     form: {
         padding: '3.2rem',
         height: '43.5rem',
-        minWidth: '30rem',
-
+        minWidth: '30rem'
+    },
+    header: {
+        fontSize: '2.4rem',
+        flex: '1',
+        letterSpacing: '-2'
+        
+    },
+    header2: {
+        fontSize: '8.4rem',
+        marginTop: '-2rem',
+        paddingTop: '0'
+    },
+    inputBento: {    
+    },
+    textField: {
+        alignSelf: "flex-end",
+        width: '5rem'
+    },
+    inputCuisine: {
+    },
+    inputCost: {
     }
   });
   
@@ -25,8 +47,7 @@ class BentoForm extends React.Component {
             name: props.bento ? props.bento.name : '',
             ingredients: props.bento ? props.bento.ingredients : '',
             cuisine: props.bento ? props.bento.cuisine : '',
-            cost: props.bento ? (props.bento.cost).toString() : '',
-            currentQuestion: 'name'
+            cost: props.bento ? (props.bento.cost).toString() : ''
         };
     }
 
@@ -119,71 +140,98 @@ class BentoForm extends React.Component {
     render () {
         
         return (
-            <div className={this.props.classes.root}>
-            {this.state.error && <p>{this.state.error}</p>}
+            <div>
                 <form onSubmit={this.onSubmit}>
                 <Paper  className={this.props.classes.form} square={true}>
+                <Grid container spacing={0}>
+                    <Grid item xs={12}>
+                    <Typography gutterBottom variant="h1" component="h1" className={this.props.classes.header}>
+                    {this.props.header}
+                    </Typography>
+                    </Grid>
 
-                
-                    {
-                        
-                        this.state.currentQuestion === 'name' &&
-                        <div>
-                        <Typography gutterBottom variant="h5" component="h2" className={this.props.classes.header}>
-                        Make a Bento, 
-                        </Typography>
-                        <input
+                    <Grid item xs={12}>
+                        <TextField
                         type="text"
-                        placeholder="Name"
+                        label="BENTO NAME"
                         autoFocus
+                        fullWidth
+                        margin="normal"
+                        variant="filled"
+                        className={this.props.classes.inputBento}
                         value={this.state.name}
                         onChange={this.onNameChange}
                         />
-                        </div>
-                    }
-                    
-                    {
-                        this.state.currentQuestion === 'cuisine' &&
-                        <input
+                    </Grid>
+
+                    <Grid item xs={8}>
+                        <TextField
                         type="text"
-                        autoFocus
+                        autoFocus   
+                        InputProps={{
+                            classes: {
+                            input: this.props.classes.input,
+                            },
+                        }}
+                        margin="normal"
+                        variant="filled"
                         placeholder="Cuisine"
+                        className={this.props.classes.inputCuisine}
                         value = {this.state.cuisine}
                         onChange={this.onCuisineChange}
                         />
-                    }
-                    {
-                        this.state.currentQuestion === 'cost' &&
-                        <input
+                    </Grid>
+                    
+                    <Grid item xs={4}>
+                        <TextField
                         type="text"
                         placeholder="Cost"
                         autoFocus
+                        margin="normal"
+                        variant="filled"
+                        className={this.props.classes.inputCost}
                         value={this.state.cost}
                         onChange={this.onCostChange}
                         />
-                    }
-                    {
-                        this.state.currentQuestion === 'ingredients' &&
-                        <textarea
-                        placeholder="List of Ingredients used (optional)"    
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <TextField
+                        margin="normal"
+                        variant="filled"
+                        fullWidth
+                        placeholder="List of Ingredients used (optional)" 
+                        className={this.props.classes.input}   
                         value={this.state.ingredients}
                         onChange={this.onIngredientsChange}
-                        >
-                        </textarea>
-                    }
-                    { 
-                        this.state.currentQuestion === 'img' && 
-                        <input
+                        />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <TextField
                         type="text"
+                        margin="normal"
+                        variant="filled"
+                        fullWidth
                         placeholder="Image URL"
+                        className={this.props.classes.input}
                         value={this.state.img}
                         onChange={this.onImgChange}
                         />
-                    }
-                    <button> Submit Bento </button>
-                    </Paper>
-                </form>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                    <button
+                    hidden={!this.props.remove}
+                    onClick={this.props.onRemovebento}>
+                        Remove Bento
+                    </button>
                 
+                <button> Submit Bento </button>
+                    </Grid>
+                </Grid>
+                </Paper>
+                </form>
             </div>
         )
     }

@@ -33,7 +33,10 @@ const useStyles = makeStyles({
         <BentoList/>
         </div>
         <div className={classes.bentoform}>
-        <BentoForm />
+        <BentoForm 
+        header={"MAKE A BENTO"}
+        remove={false}
+        />
         </div>
         </div>
     );

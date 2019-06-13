@@ -21,9 +21,11 @@ export class EditBentoPage extends React.Component {
         <BentoForm 
           bento={this.props.bento}
           onSubmit = {this.onSubmit}
+          header={"Edit"}
+          remove={true}
+          onRemovebento={this.onRemovebento}
         />
-        <button onClick={this.onRemovebento}
-        > Remove </button>
+        
       </div>
     );
   }
