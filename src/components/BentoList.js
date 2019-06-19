@@ -15,12 +15,12 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        minHeight: '50rem'
+        minHeight: '50rem',
     },
     headerContainer: {
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: '1.6rem'
+        marginBottom: '1.6rem',
     },
     header: {
         flexGrow: 1

@@ -4,7 +4,7 @@ import BentoForm from './BentoForm';
 import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
     root: {
-      backgroundColor: '#f5f5f5',
+      backgroundColor: '#F6F8FA',
       padding: '0',
       display: 'flex',
       flexDirection: 'row',
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
       minHeight: '70rem'
     },
     bentolist: {
-      backgroundColor: '#f5f5f5',
+      backgroundColor: '#F6F8FA',
       margin: '0 1.6rem',
       flex: 1,
     },

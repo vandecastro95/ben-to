@@ -42,10 +42,7 @@ export class BentoListFilters extends React.Component {
             inputProps={{ 'aria-label': 'Search' }}
             value={this.props.filters.onTextChange}
             onChange={this.onTextChange} />
-            
-            <IconButton aria-label="Search">
                 <SearchIcon />
-            </IconButton>
         </Box>
     )}}
 

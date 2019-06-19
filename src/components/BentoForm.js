@@ -202,7 +202,7 @@ class BentoForm extends React.Component {
                         margin="normal"
                         variant="standard"
                         fullWidth
-                        label="iNGREDIENTS" 
+                        label="INGREDIENTS" 
                         className={this.props.classes.input}   
                         value={this.state.ingredients}
                         onChange={this.onIngredientsChange}
@@ -222,7 +222,9 @@ class BentoForm extends React.Component {
                         />
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid 
+                    alignSelf="flex-end"
+                    item xs={12}>
                     <button
                     hidden={!this.props.remove}
                     onClick={this.props.onRemovebento}>
