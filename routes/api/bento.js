@@ -50,7 +50,6 @@ router.post(
         nameofbento: req.body.nameofbento,
         description: req.body.description,
         ingredients: req.body.ingredients,
-        cuisine: req.body.cuisine,
         cost: req.body.cost,
         image: req.body.image
       });
@@ -63,6 +62,61 @@ router.post(
     }
   }
 );
+
+// @route   PUT api/bento/:id
+// @desc    edit bento
+// @access  private
+router.put("/:id", auth, async (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const {
+    cuisine,
+    nameofbento,
+    ingredients,
+    description,
+    cost,
+    image
+  } = req.body;
+
+  const bentoFields = {};
+
+  if (cuisine) bentoFields.cuisine = cuisine;
+  if (nameofbento) bentoFields.nameofbento = nameofbento;
+  if (description) bentoFields.description = description;
+  if (cost) bentoFields.cost = cost;
+  if (image) bentoFields.image = image;
+  if (ingredients) bentoFields.ingredients = ingredients;
+
+  try {
+    let bento = await Bento.findById(req.params.id);
+
+    if (!bento) {
+      return res.status(404).json({ msg: "Bento not found" });
+    }
+
+    // if (!bento.user.toString() !== req.user.id) {
+    //   return res.status(401).json({ msg: "User not Authorized" });
+    // }
+
+    if (bento) {
+      bento = await Bento.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: bentoFields },
+        { new: true }
+      );
+      return res.json(bento);
+    }
+
+    res.json(bento);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // @route   GET api/bento
 // @desc    get all bento
