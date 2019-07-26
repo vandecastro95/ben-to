@@ -19,10 +19,14 @@ const styles = theme => ({
 
 export class BentoListFilters extends React.Component {
    state = {
-       
+       value: this.props.value ? this.props.value : ''
    };
 
-   onTextChange = (e) => {
+    componentDidMount = () => {
+        this.props.setTextFilter(this.state.value)
+    }
+
+    onTextChange = (e) => {
     this.props.setTextFilter(e.target.value)
     }
 
@@ -36,7 +40,7 @@ export class BentoListFilters extends React.Component {
         
         <input type="text"
             
-            placeholder="Search"
+            placeholder={this.state.value ? this.state.value : ''}
             inputProps={{ 'aria-label': 'Search' }}
             value={this.props.filters.onTextChange}
             onChange={this.onTextChange} />

@@ -16,13 +16,18 @@ const useStyles = makeStyles({
     width: 317,
     height: 200,
     textDecoration: 'none',
-    margin: 0
+    margin: 0,
+    ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+        width: '100%',
+        height: 'auto',
+        margin: '0 auto'
+      }
   },
   media: {
-    height: 80,
+    height: 150,
     transition: 'all .2s ease-in-out',
     '&:hover': {
-        height: 150,
+        height: 80,
         transition: 'all .2s ease-in-out'
     }
   },
@@ -54,7 +59,7 @@ function BentoListItem({ name, cuisine, cost, id, ingredients, img }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} square={true} elevation={1}>
         
         <CardMedia
           className={classes.media}

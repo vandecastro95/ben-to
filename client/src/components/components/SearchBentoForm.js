@@ -2,20 +2,28 @@ import React from 'react';
 import { Paper, Typography, Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
       background: 'none',
+      position: 'inherit',
       ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
-        maxWidth: '100%'
+        width: '100%',
+        maxWidth: '100%',
+        margin: '0'
       }
       
     },
     form: {
         padding: '3.2rem',
-        height: '43.5rem',
+        height: '32rem',
+        maxWidth: '33rem',
         ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
-            width: 'auto',
+            width: '100%',
+            maxWidth: '100%',
+            margin: '0'
           }
     },
     header: {
@@ -26,7 +34,12 @@ const styles = theme => ({
         flex: '1',
         padding: '0 -6px',
         fontWeight: 'bold',
-        fontFamily: 'Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif'
+        fontFamily: 'Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif',
+        ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+            overflowWrap: "break-word",
+            margin: '1rem',
+            fontSize: '20px'
+          }
         
     },
     header2: {
@@ -40,6 +53,10 @@ const styles = theme => ({
     textField: {
         alignSelf: "flex-end",
         width: '5rem'
+    },
+    searchButton: {
+        marginTop: '2rem',
+        boxShadow: 0
     },
     inputCuisine: {
     },
@@ -56,9 +73,7 @@ class BentoForm extends React.Component {
 
         this.state = {
             name: props.bento ? props.bento.name : '',
-            ingredients: props.bento ? props.bento.ingredients : '',
             cuisine: props.bento ? props.bento.cuisine : '',
-            cost: props.bento ? (props.bento.cost).toString() : ''
         };
     }
 
@@ -72,30 +87,26 @@ class BentoForm extends React.Component {
         this.setState({ cuisine })
     }
 
-    onCostChange = (e) => {
-        const cost = e.target.value;
-
-        if(!cost || cost.match(/^\d{1,}(\.\d{0,2})?$/)) {
-            this.setState({ cost })
-        }   else {
-            console.log('no match')
-        }
-    }
-
-    onIngredientsChange = (e) => {
-        const ingredients = e.target.value;
-        this.setState({ ingredients })
-    }
-
-    onImgChange = (e) => {
-        const img = e.target.value;
-        this.setState({ img })
-    }
-
     onSubmit = (e) => {
-        e.preventDefault()
-        console.log(this.state)
+        e.preventDefault();
 
+        if(this.state.currentQuestion === 'name') {
+            if(this.state.name.length >= 1) {
+                this.setState({
+                    currentQuestion: 'cuisine'
+                })
+            }
+        }
+
+        if(this.state.currentQuestion === 'cuisine') {
+            if(this.state.cuisine.length >= 1) {
+                this.setState({
+                    currentQuestion: 'cost'
+                })
+            }
+        }
+
+        if(this.state.currentQuestion === 'none') {
             this.setState(() => ({ error: ''}))
             this.props.onSubmit({
                 name: this.state.name,
@@ -105,14 +116,15 @@ class BentoForm extends React.Component {
                 img: this.state.img
 
             })
+        }
     }
 
     render () {
         
         return (
-            <div>
+            <Paper elevation={3}>
                 <form onSubmit={this.onSubmit}>
-                <Paper  className={this.props.classes.form} square={true} elevation={3}>
+                <Paper  className={this.props.classes.form} square={true} elevation={21}>
                 <Grid container spacing={0}>
                     <Grid item xs={12}>
                     <Typography gutterBottom variant="h1" component="h1" className={this.props.classes.header}>
@@ -123,19 +135,18 @@ class BentoForm extends React.Component {
                     <Grid item xs={12}>
                         <TextField
                         type="text"
-                        label="BENTO NAME"
+                        label="Search by Dish Name"
                         autoFocus
                         fullWidth
                         margin="normal"
                         variant="standard"
-                        required={true}
                         className={this.props.classes.inputBento}
                         value={this.state.name}
                         onChange={this.onNameChange}
                         />
                     </Grid>
 
-                    <Grid item xs={8}>
+                    <Grid item xs={12}>
                         <TextField
                         type="text"
                         autoFocus   
@@ -144,72 +155,33 @@ class BentoForm extends React.Component {
                             input: this.props.classes.input,
                             },
                         }}
+                        fullWidth
                         margin="normal"
                         variant="standard"
-                        label="CUISINE"
-                        required={true}
+                        label="Search by Cuisine"
                         className={this.props.classes.inputCuisine}
                         value = {this.state.cuisine}
                         onChange={this.onCuisineChange}
                         />
                     </Grid>
-                    
-                    <Grid item xs={4}>
-                        <TextField
-                        label="COST"
-                        autoFocus
-                        placeholder={'00.00'}
-                        margin="normal"
-                        variant="standard"
-                        required={true}
-                        className={this.props.classes.inputCost}
-                        value={this.state.cost}
-                        onChange={this.onCostChange}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <TextField
-                        margin="normal"
-                        variant="standard"
-                        fullWidth
-                        label="INGREDIENTS" 
-                        required={true}
-                        className={this.props.classes.input}   
-                        value={this.state.ingredients}
-                        onChange={this.onIngredientsChange}
-                        />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <TextField
-                        type="url"
-                        margin="normal"
-                        variant="standard"
-                        fullWidth
-                        label="IMAGE URL"
-                        required={true}
-                        className={this.props.classes.input}
-                        value={this.state.img}
-                        onChange={this.onImgChange}
-                        />
-                    </Grid>
+                    <Grid item xs={7}></Grid>
 
                     <Grid 
+                    mt={3}
                     alignSelf="flex-end"
-                    item xs={12}>
-                    <button
-                    hidden={!this.props.remove}
-                    onClick={this.props.onRemovebento}>
-                        Remove Bento
-                    </button>
-                
-                <button> Submit Bento </button>
+                    item xs={5}>
+
+                    <Link to={this.state.name ? `/market/${this.state.name}` : this.state.cuisine ? `/market/${this.state.cuisine}` : `/home`} >
+                    <Button
+                    variant="contained"
+                    className={this.props.classes.searchButton}
+                    > Search Bento </Button>
+                    </Link>
                     </Grid>
                 </Grid>
                 </Paper>
                 </form>
-            </div>
+            </Paper>
         )
     }
 }

@@ -4,7 +4,7 @@ import Image from '../../images/Image01.jpg';
 import Box from '@material-ui/core/Box';
 import TopBar from '../components/LandingPageTopBar';
 import '../../styles/components/landingPage.css';
-import BentoForm from '../components/BentoForm'
+import SearchBentoForm from '../components/SearchBentoForm'
 
 
 const useStyles = makeStyles({
@@ -15,11 +15,21 @@ const useStyles = makeStyles({
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center center",
       backgroundSize: "cover",
+      ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+        backgroundPosition: "center -170px",
+        backgroundSize: "100% 50% contain",
+      }
     },
     form: {
       position: 'fixed',
-      top: '20%',
-      left: '10%'
+      top: '30%',
+      left: '10%',
+      ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+          width: '100%',
+          maxWidth: '100%',
+          left: '0',
+          top: '50%'
+        }
     }
   });
 
@@ -30,8 +40,8 @@ const useStyles = makeStyles({
         <div  className={classes.root}>
         <TopBar />
           <Box className={classes.form}>
-            <BentoForm 
-            header={"Sell home cooked meals from the comfort of your own home."}
+            <SearchBentoForm 
+            header={"Discover Authentic Home-Cooked Bentos."}
             />
           </Box>
         </div>

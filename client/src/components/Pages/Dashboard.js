@@ -1,8 +1,8 @@
 import React from 'react';
 import BentoList from '../components/BentoList';
-import BentoForm from '../components/BentoForm';
 import { makeStyles } from '@material-ui/styles';
 import Header from '../components/Header';
+import AddBentoPage from './AddBentoPage';
 
 const useStyles = makeStyles({
     root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     },
     bentolist: {
       backgroundColor: '#F6F8FA',
-      margin: '0 1.6rem',
+      margin: '1rem 1.6rem',
       flex: 1,
     },
     bentoform: {
@@ -28,25 +28,27 @@ const useStyles = makeStyles({
       ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
         width: '100vw',
         maxWidth: '100vw',
-        margin: '1rem 0',
+        margin: '0',
       }
     }
   });
 
-  export default function Dashboard() {
+  export default function Dashboard(props) {
     const classes = useStyles();
+    const value = props.match.params.variable;
+    
     return (
         <div>
         <Header/>
         <div className={classes.root}>
         <div  className={classes.bentolist} >
-        <BentoList/>
+        
+        <BentoList
+        value={value}
+        />
         </div>
         <div className={classes.bentoform}>
-        <BentoForm 
-        header={"Make a Bento.  "}
-        remove={false}
-        />
+          <AddBentoPage />
         </div>
         </div>
         </div>
