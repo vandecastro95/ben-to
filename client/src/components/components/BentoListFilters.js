@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter } from './actions/filters';
+import { setTextFilter } from '../actions/filters';
 import Box from '@material-ui/core/Box';
-import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
-import '../styles/components/header.css';
-import compose from 'recompose/compose';
+import '../../styles/components/header.css';
 
 const styles = theme => ({
     root: {
@@ -55,5 +53,4 @@ const mapStateToProps = (state) => ({ filters: state.filters })
 
 export default 
     withStyles(styles)(
-    connect(mapStateToProps, mapDispatchToProps)
-    (BentoListFilters))
+    connect(mapStateToProps, mapDispatchToProps)(BentoListFilters))

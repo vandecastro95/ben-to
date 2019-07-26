@@ -5,19 +5,32 @@ import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
     root: {
-      background: 'none'
+      background: 'none',
+      position: 'inherit',
+      ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+        width: '100%',
+        maxWidth: '100%'
+      }
       
     },
     form: {
         padding: '3.2rem',
         height: '43.5rem',
-        margin: '1.6rem',
-        maxWidth: '30rem'
+        maxWidth: '30rem',
+        ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+            width: '100%',
+            maxWidth: '100%'
+          }
     },
     header: {
-        fontSize: '2.4rem',
+        fontSize: '30px',
+        lineHeight: '36px',
+        letterSpacing: 'normal',
+        color: '#484848',
         flex: '1',
-        letterSpacing: '-2'
+        padding: '0 -6px',
+        fontWeight: 'bold',
+        fontFamily: 'Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif'
         
     },
     header2: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BentoListItem from './BentoListItem'
-import selectBento from './selectors/bento';
+import selectBento from '../selectors/bento';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';

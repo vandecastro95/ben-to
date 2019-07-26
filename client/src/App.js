@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import AppRouter from './components/routes/AppRouter';
-import configureStore from './components/store/configureStore';
+  import configureStore from './components/store/configureStore';
 import { addBento } from './components/actions/bento';
 import getVisibleBento from './components/selectors/bento';
 import 'normalize.css/normalize.css';

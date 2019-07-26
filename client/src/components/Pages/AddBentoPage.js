@@ -1,7 +1,7 @@
 import React from 'react';
-import BentoForm from './BentoForm'
+import BentoForm from '../components/BentoForm'
 import { connect } from 'react-redux';
-import { addBento } from './actions/bento'
+import { addBento } from '../actions/bento'
 
 class AddBentoPage extends React.Component {
     onSubmit = (bento) => {
