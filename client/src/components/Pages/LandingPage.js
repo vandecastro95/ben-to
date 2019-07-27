@@ -5,10 +5,10 @@ import Box from '@material-ui/core/Box';
 import TopBar from '../components/LandingPageTopBar';
 import '../../styles/components/landingPage.css';
 import SearchBentoForm from '../components/SearchBentoForm'
-
+import LandingPageSecondPage from '../components/LandingPageSecondPage';
 
 const useStyles = makeStyles({
-    root: {
+    Page1: {
       minHeight: '100vh',
       width: 'auto',
       backgroundImage: `linear-gradient(to right top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .5  ) ),  url(${Image})`,
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
       }
     },
     form: {
-      position: 'fixed',
+      position: 'absolute',
       top: '30%',
       left: '10%',
       ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
@@ -37,13 +37,15 @@ const useStyles = makeStyles({
     const classes = useStyles();
 
     return (
-        <div  className={classes.root}>
-        <TopBar />
-          <Box className={classes.form}>
-            <SearchBentoForm 
-            header={"Discover Authentic Home-Cooked Bentos."}
-            />
-          </Box>
+      <div>
+        <div  className={classes.Page1}>
+          <TopBar  />
+            <Box className={classes.form}>
+              <SearchBentoForm 
+              header={"Discover Authentic Home-Cooked Bento."}
+              />
+            </Box>
         </div>
+      </div>
     );
   }

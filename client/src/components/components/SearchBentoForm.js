@@ -18,7 +18,7 @@ const styles = theme => ({
     },
     form: {
         padding: '3.2rem',
-        height: '32rem',
+        height: '40rem',
         maxWidth: '33rem',
         ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
             width: '100%',
@@ -56,7 +56,11 @@ const styles = theme => ({
     },
     searchButton: {
         marginTop: '2rem',
-        boxShadow: 0
+        boxShadow: 0,
+        '&:hover': {
+            background: '#2ABBC7',
+            transition: 'background .5s ease-in-out'
+        }
     },
     inputCuisine: {
     },
@@ -136,7 +140,6 @@ class BentoForm extends React.Component {
                         <TextField
                         type="text"
                         label="Search by Dish Name"
-                        autoFocus
                         fullWidth
                         margin="normal"
                         variant="standard"
@@ -148,8 +151,7 @@ class BentoForm extends React.Component {
 
                     <Grid item xs={12}>
                         <TextField
-                        type="text"
-                        autoFocus   
+                        type="text"   
                         InputProps={{
                             classes: {
                             input: this.props.classes.input,
@@ -174,6 +176,7 @@ class BentoForm extends React.Component {
                     <Link to={this.state.name ? `/market/${this.state.name}` : this.state.cuisine ? `/market/${this.state.cuisine}` : `/home`} >
                     <Button
                     variant="contained"
+                    elevation={0}
                     className={this.props.classes.searchButton}
                     > Search Bento </Button>
                     </Link>

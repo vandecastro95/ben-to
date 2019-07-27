@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     margin: 0,
     ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
         width: '100%',
-        height: 'auto',
+        height: '300px',
         margin: '0 auto'
       }
   },
@@ -29,6 +29,11 @@ const useStyles = makeStyles({
     '&:hover': {
         height: 80,
         transition: 'all .2s ease-in-out'
+    },
+    ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+      width: '100%',
+      height: '180px',
+      margin: '0 auto'
     }
   },
   header: {
@@ -59,8 +64,7 @@ function BentoListItem({ name, cuisine, cost, id, ingredients, img }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} square={true} elevation={1}>
-        
+    <Card className={classes.card} square={true} elevation={1} >
         <CardMedia
           className={classes.media}
           image={img}
@@ -84,8 +88,7 @@ function BentoListItem({ name, cuisine, cost, id, ingredients, img }) {
         
         <Link to={"/edit/" + id + ""}  className={classes.edit}>
         <Button variant="outlined" className={classes.button}>
-        Edit
-        
+          Edit
         </Button>
         </Link>
       </CardActions>

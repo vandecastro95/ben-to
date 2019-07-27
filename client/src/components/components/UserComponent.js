@@ -57,6 +57,9 @@ const useStyles = makeStyles({
       fontSize: '3rem'
     }
   },
+  name2: {
+    fontSize: '13px'
+  },
   form: {
     ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
       width: '70%',
@@ -89,8 +92,8 @@ const useStyles = makeStyles({
                     Bobby Lee
                     </Typography>
                     <Divider />
-                    <Typography variant="p" className={classes.name2} gutterBottom>
-                    Austin, Texas
+                    <Typography variant="body2" className={classes.name2} gutterBottom>
+                      Austin, Texas
                     </Typography>
                   </Grid>
                   

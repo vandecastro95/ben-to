@@ -6,6 +6,7 @@ import LandingPage from '../Pages/LandingPage';
 import AddBentoPage from '../Pages/AddBentoPage';
 import EditBentoPage from '../Pages/EditBentoPage';
 import NotFoundPage from '../Pages/NotFoundPage';
+import LogInPage from '../Pages/LogInPage';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -17,6 +18,8 @@ const AppRouter = () => (
             <Route path='/market/:variable' component={Dashboard}/>
             <Route path='/create' component={AddBentoPage} />
             <Route path='/edit/:id' component={EditBentoPage} />
+            <Route path='/SignUp' component={NotFoundPage} />
+            <Route path='/LogIn' component={LogInPage} />
             <Route component={NotFoundPage}/>
         </Switch>
     </div>

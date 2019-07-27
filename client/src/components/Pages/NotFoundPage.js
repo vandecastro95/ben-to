@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const NotFoundPage = () => (
-    <div>
-        404
-    </div>
-)
+const NotFound = () =>
+  <div style={{margin: '20rem'}}>
+    <h3>404 page not found</h3>
+    <p>We are sorry but the page you are looking for does not exist, or is currently under construction.</p>
+  </div>
 
-export default NotFoundPage;
+export default NotFound

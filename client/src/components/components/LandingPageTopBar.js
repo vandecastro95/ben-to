@@ -6,7 +6,7 @@ import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles({
     header: {
-        position: 'fixed',
+        position: 'absolute',
         marginTop: '10',
         width: '100%',
     },
@@ -28,7 +28,8 @@ const useStyles = makeStyles({
         textRendering: 'optimizeLegibility',
         fontWeight: '500',
         '&:hover': {
-            color: '#bae7ed'
+            color: '#2ABBC7',
+            transition: 'color .3s ease-in-out'
         }
     }
   });
@@ -43,8 +44,8 @@ export default function TopBar() {
         <ul className= {classes.linkList}>
                 <li> <NavLink to="/home" activeClassName="is-active" className= {classes.links}>Home</NavLink></li>
                 <li><NavLink to="/market" activeClassName="is-active" className= {classes.links}>Market</NavLink></li>
-                <li><NavLink to="/market" activeClassName="is-active" className= {classes.links}>Sign up</NavLink></li>
-                <li> <NavLink to="/home" activeClassName="is-active" exact={true} className= {classes.links}>Log in</NavLink></li>
+                <li><NavLink to="/SignUp" activeClassName="is-active" className= {classes.links}>Sign up</NavLink></li>
+                <li> <NavLink to="/LogIn" activeClassName="is-active" exact={true} className= {classes.links}>Log in</NavLink></li>
         </ul>
         </Fade>
         </Box>

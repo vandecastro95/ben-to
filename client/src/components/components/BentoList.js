@@ -17,6 +17,7 @@ const useStyles = makeStyles({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         minHeight: '50rem',
+        margin: 'auto'
     },
     headerContainer: {
         display: 'flex',
@@ -76,7 +77,6 @@ const useStyles = makeStyles({
 
             <Box
             className={classes.headerSearch}
-            gutterBottom
             >
             <BentoListFilters
             value={props.value ? props.value : ''}
@@ -93,17 +93,21 @@ const useStyles = makeStyles({
             props.bento &&
             props.bento.map((expense) => {
                 return (
+                    
+                    
                     <Paper
                     elevation={0}
                     className={classes.bento}
+                    key={expense.id}
                     >
-
-                    <BentoListItem
                     
+                    <BentoListItem
                     {...expense} 
                     key={expense.id}
                     />
+                    
                     </Paper>
+                    
                 )
             })
         )

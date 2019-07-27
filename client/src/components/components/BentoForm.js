@@ -38,7 +38,6 @@ const styles = theme => ({
         fontSize: '2rem' 
     },
     textField: {
-        alignSelf: "flex-end",
         width: '5rem'
     },
     inputCuisine: {
@@ -196,7 +195,6 @@ class BentoForm extends React.Component {
                     </Grid>
 
                     <Grid 
-                    alignSelf="flex-end"
                     item xs={12}>
                     <button
                     hidden={!this.props.remove}
