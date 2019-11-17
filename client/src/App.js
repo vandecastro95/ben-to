@@ -53,16 +53,14 @@ const App = () => {
     //wrap everything with provider so every component can access state.
     <Provider store={store}>
       <Router>
-         
            <ThemeProvider theme={theme}>
            <CssBaseline/>
-           <Navbar />
             <Switch>
               <Route exact path='/' component={Landing} />
+              <Navbar />
               <Route component={Routes} />
             </Switch>
           </ThemeProvider>
-          
       </Router>
     </Provider>
   );

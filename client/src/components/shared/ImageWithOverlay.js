@@ -8,7 +8,7 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
     root: {
         backgroundColor: 'transparent',
         border: 'none',
-        width: '70%',
+        width: '100%',
         margin: '0 auto',
         ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
             width: '100%',
@@ -42,6 +42,7 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
     },
     imagePosWrapperRight: {
       position: 'relative',
+      marginBottom: '2%',
       backgroundColor: 'transparent',
 
       ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
@@ -58,6 +59,7 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
     },
     imagePosWrapperLeft: {
       position: 'relative',
+      marginBottom: '2%',
       backgroundColor: 'transparent',
 
       ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key

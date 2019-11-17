@@ -3,8 +3,9 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Paper, Box, TextField } from '@material-ui/core'
+import { Paper, Box, TextField, Grid } from '@material-ui/core'
 import ImageWithOverlay from '../shared/ImageWithOverlay'
+import NavBar from './Navbar';
 import pansit from '../../assets/bihon.jpg';
 import landingBG from '../../assets/steaks.jpg';
 import katsu from '../../assets/katsu.jpg';
@@ -19,11 +20,11 @@ const Landing = ({ isAuthenticated }) => {
     root: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#efebe9'
+      backgroundColor: '#f7f7f7'
     },
     landing: {
       width: '100%',
-      maxWidth: '80%',
+      maxWidth: '90%',
       position: 'relative',
       height: '100%',
       marginLeft: 'auto',
@@ -36,7 +37,7 @@ const Landing = ({ isAuthenticated }) => {
       position: 'relative',
       overflow: 'hidden',
       textAlign: 'center',
-      background: '#D8BD9F',
+      background: '#E1EAEF',
       ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
         width: '100%',
         height: '50vh',
@@ -155,6 +156,8 @@ const Landing = ({ isAuthenticated }) => {
 
   return (
     <Box className={classes.root}>
+      <NavBar 
+      landing/>
       <Box paddingTop={4} className={classes.landingContent}>
         <Box className={classes.landingContentImg}>
           <img src={bento} className={classes.bento}/>
@@ -184,36 +187,52 @@ const Landing = ({ isAuthenticated }) => {
             
       </Box>
       <Box className={classes.landing}>
-          
-          <ImageWithOverlay 
-              image={ramen} 
-              right
-              header={'Lorem Ipsum'} 
-              subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                dicta sunt explicabo.`}
-              mainText={"Less Waste, More Food"}
-          />
-          
-          <ImageWithOverlay 
-              image={katsu} 
-              header={'Lorem Ipsum'} 
-              subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                dicta sunt explicabo.`}
-              mainText={"Less Waste, More Food"}
-          />
-          
-         
-          <ImageWithOverlay 
-              image={pansit} 
-              right
-              header={'Lorem Ipsum'} 
-              subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                dicta sunt explicabo.`}
-              mainText={"Less Waste, More Food"}
-          />
+          <Grid container spacing={2}>
+                  
+                  <Grid item xs={12} lg={6}>
+                    <ImageWithOverlay 
+                        image={katsu} 
+                        right
+                        header={'Lorem Ipsum'} 
+                        subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                          dicta sunt explicabo.`}
+                        mainText={"Less Waste, More Food"}
+                    />
+                  </Grid>
+                  <Grid item xs={12} lg={6}>
+                    <ImageWithOverlay 
+                        image={pansit} 
+                        right
+                        header={'Lorem Ipsum'} 
+                        subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                          dicta sunt explicabo.`}
+                        mainText={"Less Waste, More Food"}
+                    />
+                  </Grid>
+                  <Grid item xs={12} lg={6}>
+                    <ImageWithOverlay 
+                        image={pansit} 
+                        right
+                        header={'Lorem Ipsum'} 
+                        subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                          dicta sunt explicabo.`}
+                        mainText={"Less Waste, More Food"}
+                    />
+                  </Grid>
+                  <Grid item xs={12} lg={6}>
+                    <ImageWithOverlay 
+                        image={ramen}
+                        right
+                        header={'Lorem Ipsum'} 
+                        subtitle={`ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                          dicta sunt explicabo.`}
+                        mainText={"Less Waste, More Food"}
+                    />
+                  </Grid>
+          </Grid>
           
           </Box>
-          <Box className={classes.contactUs}>
+          {/* <Box className={classes.contactUs}>
 
          
                 <Paper square elevation={4} className={classes.contactUsPaper}>
@@ -223,7 +242,7 @@ const Landing = ({ isAuthenticated }) => {
 
                   <button>CONTACT</button>
                 </Paper>
-          </Box>
+          </Box> */}
       </Box>
   );
 };

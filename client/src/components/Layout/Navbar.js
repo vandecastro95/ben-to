@@ -7,7 +7,7 @@ import { Box, Grid } from '@material-ui/core';
 import Icon from '../../img/favicon.png';
 import { makeStyles } from '@material-ui/styles';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, logout, landing }) => {
 
   const useStyles = makeStyles({
     box: {
@@ -30,6 +30,23 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       textDecoration: 'none',
       width: '100%'
     },
+    rootLanding: {
+      textDecoration: 'none',
+      background: '#E1EAEF',
+      padding: '0.7rem 2rem',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignContent: 'center',
+      alignItems: 'center',
+      border: 'none',
+      // borderBottom: 'gray 2px solid',
+      marginBottom: 0,
+      position: 'relative',
+      textDecoration: 'none',
+      width: '100%',
+      color: 'white'
+    },
     ul : {
       display: 'flex',
       padding: '0.7rem 2rem',
@@ -43,10 +60,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       },
     },
     li: {
-      fontWeight: '600',
-      letterSpacing: '0',
-      fontSize: '18px',
-      color: 'white',
+      fontWeight: '500',
+      letterSpacing: '1px',
+      fontSize: '15px',
       textTransform: 'uppercase',
       verticalAlign: 'baseline',
       padding: '0.6rem',
@@ -54,9 +70,26 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       textDecoration: 'none',
       transition: 'all .1s ease-in-out',
       border: 'none',
-
+      color: 'white',
       '&:hover': {
-        borderBottom: '.2px solid #2ABBC7'
+        borderBottom: '.2px solid white'
+     },
+    },
+
+    liLanding: {
+      fontWeight: '500',
+      letterSpacing: '1px',
+      fontSize: '15px',
+      textTransform: 'uppercase',
+      verticalAlign: 'baseline',
+      padding: '0.6rem',
+      margin: '0 0.25rem',
+      textDecoration: 'none',
+      transition: 'all .1s ease-in-out',
+      border: 'none',
+      color: '#665247',
+      '&:hover': {
+        borderBottom: '.2px solid #665247'
      },
     },
     Icon: {
@@ -77,13 +110,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul className={classes.ul}>
       <li>
-        <Link className={classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'>Profiles</Link>
+        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'>Profiles</Link>
       </li>
       <li>
-        <Link className={classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/bentos'>Bento</Link>
+        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/bentos'>Bento</Link>
       </li>
       <li>
-        <Link className={classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/add-bento'>Create Bento</Link>
+        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/add-bento'>Create Bento</Link>
       </li>
       <li>
         <a onClick={logout} href='#!'>
@@ -95,20 +128,20 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul className={classes.ul}>
       <li>
-        <Link className={classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'> Profiles</Link>
+        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'> Profiles</Link>
       </li>
       <li>
-        <Link className={classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/register'> Register</Link>
+        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/register'> Register</Link>
       </li>
       <li>
-        <Link className={classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/login'> Login</Link>
+        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/login'> Login</Link>
       </li>
     </ul>
   );
 
   return (
       <Box boxShadow={10} position='static' className={classes.box}>
-        <Grid container spacing={0} className={classes.root}>
+        <Grid container spacing={0} className={landing ? classes.rootLanding : classes.root}>
           <Grid item xs={12} md={8} lg={8}>
           <h1 className={classes.Icon}> 
             <Link to='/'>
