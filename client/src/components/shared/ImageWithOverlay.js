@@ -8,7 +8,7 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
     root: {
         backgroundColor: 'transparent',
         border: 'none',
-        width: '80%',
+        width: '70%',
         margin: '0 auto',
         ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
             width: '100%',
@@ -189,7 +189,7 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
                     </Box>
                   </Box>
               </Box>
-              <Paper elevation={4} square={true} className={right ? classes.textBoxPosWrapper : classes.textBoxPosWrapperLeft}>
+              <Paper elevation={10} square={true} className={right ? classes.textBoxPosWrapper : classes.textBoxPosWrapperLeft}>
                 <Box>
                     <p className={classes.mainText}>{mainText}</p>
                     <h3 className={classes.header}>{header}</h3>

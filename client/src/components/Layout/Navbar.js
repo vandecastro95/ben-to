@@ -10,10 +10,13 @@ import { makeStyles } from '@material-ui/styles';
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const useStyles = makeStyles({
+    box: {
+      zIndex: '100'
+    },
     root: {
       textDecoration: 'none',
-      background: '#FFFFFF',
-      color: 'black',
+      background: '#212121',
+      color: 'white',
       padding: '0.7rem 2rem',
       display: 'flex',
       flexDirection: 'row',
@@ -43,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       fontWeight: '600',
       letterSpacing: '0',
       fontSize: '18px',
-      color: 'black',
+      color: 'white',
       textTransform: 'uppercase',
       verticalAlign: 'baseline',
       padding: '0.6rem',
@@ -104,8 +107,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   return (
-    <nav>
-      <Box boxShadow={0} position='static'>
+      <Box boxShadow={10} position='static' className={classes.box}>
         <Grid container spacing={0} className={classes.root}>
           <Grid item xs={12} md={8} lg={8}>
           <h1 className={classes.Icon}> 
@@ -122,7 +124,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         
         </Grid>
       </Box>
-    </nav>
   );
 };
 
