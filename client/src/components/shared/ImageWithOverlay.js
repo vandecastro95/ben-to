@@ -13,16 +13,18 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
         ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
             width: '100%',
           },
-          ['@media (min-width:1025px)']: { // eslint-disable-line no-useless-computed-key
+        ['@media (min-width:1025px)']: { // eslint-disable-line no-useless-computed-key
             paddingTop: '25px',
             paddingBottom: '25px'
-          },
+        },
     },
     imageContainer: {
       overflow: 'hidden',
       position: 'relative',
-      marginTop: '50px',
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      ['@media (min-width:1025px)']: { // eslint-disable-line no-useless-computed-key
+        marginTop: '50px',
+      },
     },
     image: {
       // background: `url(${image})`,
@@ -98,9 +100,10 @@ const ImageWithOverlay = ({ image, mainText, header, subtitle, buttonText1, butt
 
         ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
             left: '0',
+            top: '-25px',
             padding: '40px 30px 20px 30px',
-            margin: '0',
-            width: '100%',
+            margin: '0 auto',
+            width: '95%',
             position: 'relative'
           },
       

@@ -32,7 +32,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout, landing }) => {
     },
     rootLanding: {
       textDecoration: 'none',
-      background: '#E1EAEF',
+      background: '#fafafa',
       padding: '0.7rem 2rem',
       display: 'flex',
       flexDirection: 'row',
@@ -110,52 +110,52 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout, landing }) => {
   const authLinks = (
     <ul className={classes.ul}>
       <li>
-        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'>Profiles</Link>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'>Market</Link>
       </li>
       <li>
-        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/bentos'>Bento</Link>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/bentos'>Bento</Link>
       </li>
       <li>
-        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/add-bento'>Create Bento</Link>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/dashboard'>Dashboard</Link>
       </li>
       <li>
-        <a onClick={logout} href='#!'>
-          <i /> <span>Logout</span>
-        </a>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' onClick={logout} to='/'>
+         Logout
+        </Link>
       </li>
     </ul>
   );
   const guestLinks = (
     <ul className={classes.ul}>
       <li>
-        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'> Profiles</Link>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'> Profiles</Link>
       </li>
       <li>
-        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/register'> Register</Link>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/register'> Register</Link>
       </li>
       <li>
-        <Link className={landing ? classes.liLanding : classes.li} style={{ textDecoration: 'none'}} color='inherit' to='/login'> Login</Link>
+        <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/login'> Login</Link>
       </li>
     </ul>
   );
 
   return (
-      <Box boxShadow={10} position='static' className={classes.box}>
-        <Grid container spacing={0} className={landing ? classes.rootLanding : classes.root}>
-          <Grid item xs={12} md={8} lg={8}>
+      <Box position='static' className={classes.box}>
+        <Box className={classes.rootLanding}>
+          <Box>
           <h1 className={classes.Icon}> 
             <Link to='/'>
               <img src={Icon} alt='Bento' className='header__title.img' />
             </Link>
           </h1>
-        </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={3} xl={2} className={classes.links}>
+        </Box>
+        <Box className={classes.links}>
           {!loading && 
             isAuthenticated ? authLinks : guestLinks
           }
-        </Grid>
+        </Box>
         
-        </Grid>
+        </Box>
       </Box>
   );
 };

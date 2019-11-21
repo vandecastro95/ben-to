@@ -26,6 +26,11 @@ const App = () => {
     fontFamily: `'Oxygen', sans-serif` ,
     fontSize: '1.6rem',
     boxSizing: 'border-box',
+    typography: {
+      // In Chinese and Japanese the characters are usually larger,
+      // so a smaller fontsize may be appropriate.
+      fontSize: 20,
+    },
 
     overrides: {
       MuiCssBaseline: {
@@ -45,8 +50,15 @@ const App = () => {
             backgroundColor: 'none',
           },
         }
-      }
-    }
+      },
+    },
+    //   palette: {
+    //     primary: {
+    //       main: '#f7f7f7',
+    //       primary: '#fafafa',
+    //       secondary: '#D8BD9F'
+    //     },
+    // }
   });
 
   return (
@@ -57,8 +69,10 @@ const App = () => {
            <CssBaseline/>
             <Switch>
               <Route exact path='/' component={Landing} />
-              <Navbar />
-              <Route component={Routes} />
+              <div>
+                <Navbar />
+                <Route component={Routes} />
+              </div>
             </Switch>
           </ThemeProvider>
       </Router>

@@ -3,6 +3,9 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/Auth';
+import FormController from '../shared/FormController';
+import ButtonLink from '../shared/ButtonLink';
+import TextField from '../shared/TextField'
 
 const Login = ({ isAuthenticated, login }) => {
   const [formData, setFormData] = useState({
@@ -24,15 +27,12 @@ const Login = ({ isAuthenticated, login }) => {
     return <Redirect to='/dashboard' />;
   }
 
-  return (
-    <Fragment>
+  const FormSlot = () => (
+    <div>
       <h1>Sign In</h1>
-      <p>
-        <i /> Sign Into Your Account
-      </p>
       <form action='create-profile.html' onSubmit={e => onSubmit(e)}>
         <div>
-          <input
+          <TextField
             type='email'
             placeholder='Email Address'
             name='email'
@@ -41,8 +41,10 @@ const Login = ({ isAuthenticated, login }) => {
             required
           />
         </div>
-        <div>
-          <input
+        <div style={{
+          margin: '10px 0'
+        }}>
+          <TextField
             type='password'
             placeholder='Password'
             name='password'
@@ -52,12 +54,50 @@ const Login = ({ isAuthenticated, login }) => {
           />
         </div>
 
-        <input type='submit' value='Login' />
+        <div
+        style={{
+          marginLeft: 'auto',
+          width: 'fit-content',
+          marginTop: '10px',
+          marginRight: '5px'}}>
+        <input type='submit' value='Login'
+        style={{
+          fontSize: '14px',
+          width: 'fit-content',
+          background: '#212121',
+          color: 'white',
+          padding: '6px 8px',
+          borderRadius: '4px',
+          textTransform: 'uppercase',
+          minWidth: '64px'
+        }}/>
+        </div>
       </form>
+    </div>
+  )
+
+  const BottomRightSlot = () => (
+        <ButtonLink dialogue="Sign Up" link="/register" /> 
+  )
+
+  const BottomLeftSlot = () => (
       <p>
-        Don't have an account? <Link to='/register'>Sign Up</Link>
+        Don't have an account?
       </p>
-    </Fragment>
+  )
+
+  return (
+    <div style={{
+      maxWidth: '500px',
+      margin: 'auto',
+      paddingTop: '20px'
+    }}>
+    <FormController 
+      formSlot={FormSlot}
+      bottomLeftSlot={BottomLeftSlot}
+      bottomRightSlot={BottomRightSlot}
+    />
+    </div>
   );
 };
 

@@ -46,6 +46,28 @@ export const getBento = id => async dispatch => {
   }
 };
 
+//GET BENTO BY USER ID
+export const getBentoById = _id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/bento/`);
+
+    const data = res.data.filter(bento => (
+      bento._id === _id
+    ));
+      console.log(data)
+      
+    dispatch({
+      type: GET_BENTO,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: BENTO_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
 //ADD SINGLE BENTO
 export const addBento = FormData => async dispatch => {
   const config = {

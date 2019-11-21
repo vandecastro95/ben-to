@@ -1,12 +1,24 @@
-import React, { Fragment } from 'react';
-import spinner from '../../img/spinner.gif';
+import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default () => (
-  <Fragment>
-    <img
-      src={spinner}
-      style={{ width: '200px', margin: 'auto', display: 'block' }}
-      alt='Loading...'
-    />
-  </Fragment>
-);
+        <div style={{
+          height: '80vh',
+          width: '100%',
+          display:'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignContent: 'center'
+        }}>
+        <div style={{margin: '0 auto'}}>
+          <CircularProgress 
+          size={50}
+          thickness={4}
+          style={{
+            color: '#6f7375'
+          }}
+          />
+        </div>
+        </div>
+        
+  ) 

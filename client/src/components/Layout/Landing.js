@@ -30,6 +30,9 @@ const Landing = ({ isAuthenticated }) => {
       marginLeft: 'auto',
       marginRight: 'auto',
       textAlign: 'center',
+      ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
+        maxWidth: '100%'
+      },
     },
     landingContent: {
       width: '100%',
@@ -37,7 +40,7 @@ const Landing = ({ isAuthenticated }) => {
       position: 'relative',
       overflow: 'hidden',
       textAlign: 'center',
-      background: '#E1EAEF',
+      background: '#fafafa',
       ['@media (max-width:1024px)']: { // eslint-disable-line no-useless-computed-key
         width: '100%',
         height: '50vh',

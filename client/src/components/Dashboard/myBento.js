@@ -59,7 +59,7 @@ const MyBento = ({
 
   return (
     <Fragment>
-      {!auth.loading && user === auth.user._id && (
+      {!auth.loading && (
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}

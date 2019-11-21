@@ -14,7 +14,7 @@ import CreateProfile from '../Profile-Form/createProfile';
 
 const Routes = () => {
   return (
-    <section className='container'>
+    <section>
       <Switch>
         <Route exact path='/register' component={Register} />
         <Route exact path='/Login' component={Login} />

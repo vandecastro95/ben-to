@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Paper } from '@material-ui/core';
 import Spinner from '../Layout/Spinner';
+import ButtonLink from '../shared/ButtonLink'
 import { getProfileById } from '../../actions/Profile';
 import { getBentos } from '../../actions/Bento';
 import ProfileAbout from './profileAbout';
@@ -36,7 +37,7 @@ const Profile = ({
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Link to='/edit-profile'>Edit Profile</Link>
+              <ButtonLink link='/edit-profile' dialogue="Edit Profile"/>
             )}
           <div>
             <ProfileAbout profile={profile} />
