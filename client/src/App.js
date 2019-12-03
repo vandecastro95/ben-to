@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'; //redux is separate from react. this pac
 import store from './store';
 import setAuthToken from './setAuthToken';
 import './app.css';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles, MuiThemeProvider  } from '@material-ui/core/styles';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -65,7 +65,7 @@ const App = () => {
     //wrap everything with provider so every component can access state.
     <Provider store={store}>
       <Router>
-           <ThemeProvider theme={theme}>
+           <MuiThemeProvider  theme={theme}>
            <CssBaseline/>
             <Switch>
               <Route exact path='/' component={Landing} />
@@ -74,7 +74,7 @@ const App = () => {
                 <Route component={Routes} />
               </div>
             </Switch>
-          </ThemeProvider>
+          </MuiThemeProvider >
       </Router>
     </Provider>
   );

@@ -22,7 +22,8 @@ const BentoItems = ({
       width: 317,
       height: 200,
       textDecoration: 'none',
-      margin: 0
+      margin: 0,
+      cursor: 'pointer'
     },
     media: {
       height: 80,
