@@ -109,9 +109,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout, landing }) => {
 
   const authLinks = (
     <ul className={classes.ul}>
-      <li>
+      {/*<li>
         <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'>Market</Link>
-      </li>
+      </li>*/}
       <li>
         <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/bentos'>Bento</Link>
       </li>
@@ -127,9 +127,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout, landing }) => {
   );
   const guestLinks = (
     <ul className={classes.ul}>
-      <li>
+      {/*<li>
         <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/profiles'> Profiles</Link>
-      </li>
+      </li>*/}
       <li>
         <Link className={classes.liLanding} style={{ textDecoration: 'none'}} color='inherit' to='/register'> Register</Link>
       </li>

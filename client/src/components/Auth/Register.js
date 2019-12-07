@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/Auth';
 import PropTypes from 'prop-types';
+import FormController from '../shared/FormController';
+import TextField from '../shared/TextField';
+import ButtonLink from '../shared/ButtonLink'
 
 //destructure setAlert from props. instead of using props.setAlert
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -34,63 +37,108 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
-  return (
+
+  const RegisterForm = () => (
     <Fragment>
-      <h1>Sign Up</h1>
-      <p>
-        <i /> Create Your Account
-      </p>
-      <form action='create-profile.html' onSubmit={e => onSubmit(e)}>
-        <div>
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={name}
-            onChange={e => onChange(e)}
-            required
-          />
+    <h1>Create An Account</h1>
+    <form action='create-profile.html' onSubmit={e => onSubmit(e)}>
+      <div>
+        <TextField
+          type='text'
+          placeholder='Name'
+          name='name'
+          value={name}
+          onChange={e => onChange(e)}
+          required
+        />
+      </div>
+      <div style={{
+        margin: '10px 0'
+      }}>
+        <TextField
+          type='email'
+          placeholder='Email Address'
+          name='email'
+          value={email}
+          onChange={e => onChange(e)}
+          required
+        />
+        {/*<small className='form-text'>
+          This site uses Gravatar so if you want a profile image, use a
+          Gravatar email
+        </small>*/}
+      </div>
+      <div style={{
+        margin: '10px 0'
+      }}>
+        <TextField
+          type='password'
+          placeholder='Password'
+          name='password'
+          minLength='6'
+          value={password}
+          onChange={e => onChange(e)}
+        />
+      </div>
+      <div style={{
+        margin: '10px 0'
+      }}>
+        <TextField
+          type='password'
+          placeholder='Confirm Password'
+          name='password2'
+          minLength='6'
+          value={password2}
+          onChange={e => onChange(e)}
+        />
+      </div>
+      <div
+        style={{
+          marginLeft: 'auto',
+          width: 'fit-content',
+          marginTop: '10px',
+          marginRight: '5px'}}>
+        <input 
+        type='submit' 
+        value='Register' 
+        style={{
+          fontSize: '14px',
+          width: 'fit-content',
+          background: '#212121',
+          color: 'white',
+          padding: '6px 8px',
+          borderRadius: '4px',
+          textTransform: 'uppercase',
+          minWidth: '64px',
+          cursor: 'pointer'
+        }}/>
         </div>
-        <div>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-            required
-          />
-          <small className='form-text'>
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
-        </div>
-        <div>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            minLength='6'
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div>
-          <input
-            type='password'
-            placeholder='Confirm Password'
-            name='password2'
-            minLength='6'
-            value={password2}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <input type='submit' value='Register' />
-      </form>
-      <p>
-        Already have an account? <Link to='/login'>Sign In</Link>
-      </p>
-    </Fragment>
+    </form>
+  </Fragment>
+  )
+
+  const BottomLeftSlot = () => (
+    <p>
+      Already have an account? 
+    </p>
+  )
+
+  const BottomRightSlot = () => (
+    <ButtonLink dialogue="Sign In" link="/login"/>
+  )
+
+  return (
+      <div style={{
+        maxWidth: '500px',
+        margin: 'auto',
+        paddingTop: '20px'
+      }}>
+        <FormController 
+          formSlot={RegisterForm}
+          bottomLeftSlot={BottomLeftSlot}
+          bottomRightSlot={BottomRightSlot}
+        />
+      </div>
   );
 };
 
